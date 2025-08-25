@@ -4131,8 +4131,8 @@ end
 
 game.StarterGui:SetCore("SendNotification", {
       Icon = "105623339332869";
-      Title = "Buồi Hub", 
-      Text = "Complete !";
+      Title = "DOG Hub", 
+      Text = "Thành Công !";
 })
 
 local IconList = {
@@ -5644,6 +5644,19 @@ function Library.Section:CreateSection(info)
     done_1.ImageRectOffset = Vector2.new(644, 204)
     done_1.ImageRectSize = Vector2.new(36, 36)
     done_1.Visible = Value
+
+local function RainbowEffect(Object, Speed)
+    task.spawn(function()
+        local t = 0
+        while task.wait(Speed or 0.05) do
+            t = t + 1
+            local hue = (t % 360) / 360
+            Object.ImageColor3 = Color3.fromHSV(hue, 1, 1)
+        end
+    end)
+end
+
+RainbowEffect(done_1, 0.05)
 
     UICorner_8.Parent = done_1
     UICorner_8.CornerRadius = UDim.new(0, 4)
